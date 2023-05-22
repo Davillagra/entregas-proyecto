@@ -1,0 +1,58 @@
+.search {
+  margin: 5% 5% 3rem 5% !important;
+  align-items: center;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 5px;
+}
+.search div {
+  height: 100%;
+}
+.search div div {
+  width: 100%;
+}
+.searchFields .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+.searchBox {
+  padding-top: 0.4rem;
+}
+.search div button {
+  border-radius: 0;
+  border-left: 1px solid rgb(128, 128, 128);
+}
+.searchFields {
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.navigation {
+  margin: 0 3rem 3rem 3rem !important;
+  justify-content: space-around;
+  height: 2rem;
+}
+.navigationLinks {
+  padding-left: 6rem;
+  height: 2rem;
+}
+.icons {
+  height: 2rem !important;
+  width: 2rem !important;
+}
+.prodAccordion {
+  height: 2rem;
+  width: auto;
+  box-shadow: unset !important;
+}
+.accordionSummary {
+  margin: 0;
+  min-height: unset !important;
+  height: 2rem;
+  align-items: center;
+}
+.accordionSummary div {
+  margin: 0;
+}
+.prodCategory {
+  color: #1b5e20;
+}

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const useCount = (initial, stock, minimo = 1) => {
+export const UseCount = (initial, stock, minimo = 1) => {
   const [count, setCount] = useState(initial)
 
   const decrement = () => {

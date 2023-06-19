@@ -13,10 +13,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }))
 
 export const CartWidget = () => {
-  const [addToCart, setAddToCart] = useState(0) // por ahora agrego items al carro solo haciendole click
+  const [addToCart, setAddToCart] = useState(5)
   return (
     <StyledBadge badgeContent={addToCart} color="warning">
-      <ShoppingCartOutlined onClick={() => setAddToCart(addToCart + 1)} />
+      <ShoppingCartOutlined />
     </StyledBadge>
   )
 }

@@ -2,12 +2,11 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  createTheme,
   Grid,
   IconButton,
   Link,
+  Switch,
   TextField,
-  ThemeProvider,
 } from "@mui/material"
 import "./Navbar.css"
 import {
@@ -18,23 +17,19 @@ import {
   ContactSupportOutlined,
   ExpandMore,
 } from "@mui/icons-material"
-import { CartWidget } from "../cartwidget/CartWidget"
-import { DarkModeHandler } from "../darkmodehandler/DarkModeHandler"
+import { CartWidget } from "../../cartwidget/CartWidget"
+import { useState } from "react"
+import { Link as CustomLink } from "react-router-dom"
 
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1b5e20",
-    },
-    warning: {
-      main: "#ff0000",
-    },
-  },
-})
-
-export const Navbar = () => {
+export const Navbar = ({ onThemeChange }) => {
+  const [themeHanlder, setThemeHanlder] = useState(true)
+  const handleThemeChange = () => {
+    const newThemeHandler = !themeHanlder
+    setThemeHanlder(newThemeHandler)
+    onThemeChange(newThemeHandler)
+  }
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Grid container className="container">
         <Grid container item action="" xs={12} className="search">
           <Grid className="searchBox" item xs={9}>
@@ -51,14 +46,14 @@ export const Navbar = () => {
             </IconButton>
           </Grid>
           <Grid item xs={1}>
-            <DarkModeHandler />
+            <Switch checked={themeHanlder} onChange={handleThemeChange} />
           </Grid>
         </Grid>
         <Grid container item xs={12} className="navigation">
           <Grid container item xs={8} gap={8} className="navigationLinks">
-            <Link>
+            <CustomLink to="/">
               <HomeOutlined className="icons" />
-            </Link>
+            </CustomLink>
             <Accordion className="prodAccordion">
               <AccordionSummary
                 className="accordionSummary"
@@ -67,16 +62,13 @@ export const Navbar = () => {
                 <Inventory2Outlined className="icons" color="primary" />
               </AccordionSummary>
               <AccordionDetails className="prodCategory">
-                Producto1
+                <CustomLink to="/">Todo</CustomLink>
               </AccordionDetails>
               <AccordionDetails className="prodCategory">
-                Producto2
+                <CustomLink to="category/urbanas">Urbanas</CustomLink>
               </AccordionDetails>
               <AccordionDetails className="prodCategory">
-                Producto3
-              </AccordionDetails>
-              <AccordionDetails className="prodCategory">
-                Producto4
+                <CustomLink to="category/deportivas">Deportivas</CustomLink>
               </AccordionDetails>
             </Accordion>
             <Link>
@@ -85,15 +77,15 @@ export const Navbar = () => {
           </Grid>
 
           <Grid container item xs={4} gap={8} className="navigationLinks">
-            <Link>
+            <CustomLink to="/cart">
               <CartWidget />
-            </Link>
+            </CustomLink>
             <Link>
               <AccountCircleOutlined className="icons" />
             </Link>
           </Grid>
         </Grid>
       </Grid>
-    </ThemeProvider>
+    </>
   )
 }

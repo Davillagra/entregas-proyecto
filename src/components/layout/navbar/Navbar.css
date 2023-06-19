@@ -4,9 +4,6 @@
   border: 1px solid rgb(128, 128, 128);
   border-radius: 5px;
 }
-.search div {
-  height: 100%;
-}
 .search div div {
   width: 100%;
 }
@@ -35,6 +32,9 @@
   padding-left: 6rem;
   height: 2rem;
 }
+.navigationLinks a {
+  color: #34c53e;
+}
 .icons {
   height: 2rem !important;
   width: 2rem !important;
@@ -54,5 +54,8 @@
   margin: 0;
 }
 .prodCategory {
-  color: #1b5e20;
+  color: #34c53e;
+}
+a {
+  text-decoration: none;
 }

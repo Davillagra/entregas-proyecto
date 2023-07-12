@@ -1,3 +1,4 @@
+import "./Cart.css"
 import {
   Button,
   ButtonBase,
@@ -6,7 +7,6 @@ import {
   styled,
   Typography,
 } from "@mui/material"
-import "./Cart.css"
 
 export const Cart = ({
   cart,

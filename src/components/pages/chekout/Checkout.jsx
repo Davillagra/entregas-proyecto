@@ -1,6 +1,6 @@
+import "./Checkout1.css"
 import { Button, TextField } from "@mui/material"
 import { Link } from "react-router-dom"
-import "./Checkout.css"
 
 export const Checkout = ({ orderId, handleSubmit, handleChange, errors }) => {
   return (

@@ -3,10 +3,8 @@ import {
   AccordionDetails,
   AccordionSummary,
   Badge,
-  CardMedia,
   Grid,
   IconButton,
-  Link,
   styled,
   Switch,
   TextField,
@@ -17,7 +15,6 @@ import {
   Search,
   AccountCircleOutlined,
   Inventory2Outlined,
-  ContactSupportOutlined,
   ExpandMore,
   ShoppingCartOutlined,
 } from "@mui/icons-material"

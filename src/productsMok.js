@@ -1,7 +1,5 @@
 export const products = [
   {
-    id: 1,
-
     title: "Nike 360",
 
     price: 15000,
@@ -16,8 +14,6 @@ export const products = [
   },
 
   {
-    id: 2,
-
     title: "wilson advance",
 
     price: 14500,
@@ -32,8 +28,6 @@ export const products = [
   },
 
   {
-    id: 3,
-
     title: "Puma",
 
     price: 19000,
@@ -49,8 +43,6 @@ export const products = [
   },
 
   {
-    id: 4,
-
     title: "Jaguar",
 
     price: 17800,
@@ -65,8 +57,6 @@ export const products = [
   },
 
   {
-    id: 5,
-
     title: "Reebok",
 
     price: 22600,
@@ -82,8 +72,6 @@ export const products = [
   },
 
   {
-    id: 6,
-
     title: "Alpine Skate",
 
     price: 22600,
@@ -99,8 +87,6 @@ export const products = [
   },
 
   {
-    id: 7,
-
     title: "Puma X-ray",
 
     price: 9800,

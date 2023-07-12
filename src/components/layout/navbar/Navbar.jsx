@@ -2,9 +2,12 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Badge,
+  CardMedia,
   Grid,
   IconButton,
   Link,
+  styled,
   Switch,
   TextField,
 } from "@mui/material"
@@ -16,10 +19,21 @@ import {
   Inventory2Outlined,
   ContactSupportOutlined,
   ExpandMore,
+  ShoppingCartOutlined,
 } from "@mui/icons-material"
-import { CartWidget } from "../../cartwidget/CartWidget"
-import { useState } from "react"
-import { Link as CustomLink } from "react-router-dom"
+import { useContext, useState } from "react"
+import { Link as CustomLink, useNavigate } from "react-router-dom"
+import { AuthContext } from "../../../context/AuthContext"
+import { CartContext } from "../../../context/CartContext"
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -0,
+    top: -0,
+    border: `1px solid ${theme}`,
+    padding: "0 4px",
+  },
+}))
 
 export const Navbar = ({ onThemeChange }) => {
   const [themeHanlder, setThemeHanlder] = useState(true)
@@ -28,11 +42,22 @@ export const Navbar = ({ onThemeChange }) => {
     setThemeHanlder(newThemeHandler)
     onThemeChange(newThemeHandler)
   }
+  const [expanded, setExpanded] = useState(false)
+  const handleMouseEnter = () => {
+    setExpanded(true)
+  }
+  const handleMouseLeave = () => {
+    setExpanded(false)
+  }
+  const { userData } = useContext(AuthContext)
+  const { getTotalQuantity } = useContext(CartContext)
+  const navigate = useNavigate()
+
   return (
     <>
       <Grid container className="container">
         <Grid container item action="" xs={12} className="search">
-          <Grid className="searchBox" item xs={9}>
+          <Grid className="searchBox" item xs={8}>
             <TextField
               id="outlined-basic"
               label="Buscar"
@@ -45,16 +70,23 @@ export const Navbar = ({ onThemeChange }) => {
               <Search />
             </IconButton>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={2}>
             <Switch checked={themeHanlder} onChange={handleThemeChange} />
           </Grid>
         </Grid>
         <Grid container item xs={12} className="navigation">
           <Grid container item xs={8} gap={8} className="navigationLinks">
-            <CustomLink to="/">
-              <HomeOutlined className="icons" />
-            </CustomLink>
-            <Accordion className="prodAccordion">
+            <HomeOutlined
+              className="icons"
+              color="primary"
+              onClick={() => navigate("/")}
+            />
+            <Accordion
+              className="prodAccordion"
+              expanded={expanded}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <AccordionSummary
                 className="accordionSummary"
                 expandIcon={<ExpandMore color="primary" />}
@@ -62,27 +94,39 @@ export const Navbar = ({ onThemeChange }) => {
                 <Inventory2Outlined className="icons" color="primary" />
               </AccordionSummary>
               <AccordionDetails className="prodCategory">
-                <CustomLink to="/">Todo</CustomLink>
+                <CustomLink onClick={handleMouseLeave} to="/">
+                  Todo
+                </CustomLink>
               </AccordionDetails>
               <AccordionDetails className="prodCategory">
-                <CustomLink to="category/urbanas">Urbanas</CustomLink>
+                <CustomLink onClick={handleMouseLeave} to="category/urbanas">
+                  Urbanas
+                </CustomLink>
               </AccordionDetails>
-              <AccordionDetails className="prodCategory">
-                <CustomLink to="category/deportivas">Deportivas</CustomLink>
+              <AccordionDetails>
+                <CustomLink onClick={handleMouseLeave} to="category/deportivas">
+                  Deportivas
+                </CustomLink>
               </AccordionDetails>
             </Accordion>
-            <Link>
-              <ContactSupportOutlined className="icons" />
-            </Link>
-          </Grid>
-
-          <Grid container item xs={4} gap={8} className="navigationLinks">
             <CustomLink to="/cart">
-              <CartWidget />
+              <StyledBadge badgeContent={getTotalQuantity()} color="warning">
+                <ShoppingCartOutlined color="primary" className="icons" />
+              </StyledBadge>
             </CustomLink>
-            <Link>
-              <AccountCircleOutlined className="icons" />
-            </Link>
+            {userData.user !== undefined ? (
+              <img
+                className="profilePicture"
+                src={userData.user.photoURL}
+                alt={userData.user.displayName}
+              />
+            ) : (
+              <AccountCircleOutlined
+                onClick={() => navigate("/login")}
+                className="icons"
+                color="primary"
+              />
+            )}
           </Grid>
         </Grid>
       </Grid>

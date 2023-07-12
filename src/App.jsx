@@ -2,12 +2,12 @@ import { ThemeProvider } from "@emotion/react"
 import { createTheme, CssBaseline } from "@mui/material"
 import { useState } from "react"
 import "./App.css"
-import { ItemListContainer } from "./components/container/ItemListContainer"
 import { Navbar } from "./components/layout/navbar/Navbar"
-import { ProductsListContainer } from "./components/pages/productlist/ProductsListContainer"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
-import { Cart } from "./components/pages/cart/Cart"
-import { ProductDetailContainer } from "./components/pages/productDetail/ProductDetailContainer"
+import { UnknownPage } from "./components/pages/unknownPage/UnknownPage"
+import { menuRoutes } from "./components/routes/menuRoutes"
+import CartContextProvider from "./context/CartContext"
+import AuthContextProvider from "./context/AuthContext"
 
 export const darkTheme = createTheme({
   palette: {
@@ -39,28 +39,27 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          element={
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Navbar onThemeChange={handleThemeChange} />
-              <Outlet />
-            </ThemeProvider>
-          }
-        >
-          <Route path="/" element={<ProductsListContainer />} />
-          <Route path="/itemdetail/:id" element={<ProductDetailContainer />} />
-          <Route
-            path="/category/:catName"
-            element={<ProductsListContainer />}
-          />
-          <Route path="/cart" element={<Cart />} />
-          <Route />
-        </Route>
-
-        <Route path="*" element={<h1>La Ruta no existe</h1>} />
-      </Routes>
+      <AuthContextProvider>
+        <CartContextProvider>
+          <Routes>
+            <Route
+              element={
+                <ThemeProvider theme={theme}>
+                  <CssBaseline />
+                  <Navbar onThemeChange={handleThemeChange} />
+                  <Outlet />
+                </ThemeProvider>
+              }
+            >
+              {menuRoutes.map(({ id, path, Element }) => (
+                <Route key={id} path={path} element={<Element />} />
+              ))}
+              <Route />
+            </Route>
+            <Route path="*" element={<UnknownPage />} />
+          </Routes>
+        </CartContextProvider>
+      </AuthContextProvider>
     </BrowserRouter>
   )
 }

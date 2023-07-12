@@ -1,0 +1,14 @@
+.paper {
+  height: 100%;
+  margin-bottom: 5rem !important;
+}
+.container {
+  padding: 5% !important;
+}
+.buttons {
+  gap: 1rem;
+}
+.buttonsAdd {
+  min-width: 36.5px !important;
+  height: 36.5px;
+}

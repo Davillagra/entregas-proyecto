@@ -23,18 +23,32 @@
   justify-content: space-around;
   align-items: center;
 }
+.container {
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+}
 .navigation {
-  margin: 0 3rem 3rem 3rem !important;
+  margin: 0 5rem 3rem 5rem !important;
   justify-content: space-around;
-  height: 2rem;
+  align-items: center;
+  height: 4rem;
+  background-color: #7e7d7d;
+  border-radius: 15px;
+  width: 50%;
 }
 .navigationLinks {
-  padding-left: 6rem;
-  height: 2rem;
+  height: 4rem;
+  flex-wrap: nowrap !important;
+  justify-content: space-evenly !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
 }
 .navigationLinks a {
   color: #34c53e;
 }
+
 .icons {
   height: 2rem !important;
   width: 2rem !important;
@@ -42,6 +56,8 @@
 .prodAccordion {
   height: 2rem;
   width: auto;
+  background: unset !important;
+  border-radius: unset !important;
   box-shadow: unset !important;
 }
 .accordionSummary {
@@ -50,12 +66,20 @@
   height: 2rem;
   align-items: center;
 }
-.accordionSummary div {
-  margin: 0;
+
+.MuiAccordion-region {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #7e7d7d;
 }
 .prodCategory {
-  color: #34c53e;
+  border-bottom: 1px dotted black;
 }
 a {
   text-decoration: none;
+}
+.profilePicture {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
 }

@@ -11,7 +11,7 @@ import "./ProductCard.css"
 
 export const ProductCard = ({ elemento: e }) => {
   return (
-    <Card sx={{ width: 345 }}>
+    <Card className="cardsContainer" sx={{ width: 345 }}>
       <CardMedia sx={{ height: 140 }} image={e.img} title={e.title} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

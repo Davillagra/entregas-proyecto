@@ -71,8 +71,8 @@ export const Navbar = ({ onThemeChange }) => {
             <Switch checked={themeHanlder} onChange={handleThemeChange} />
           </Grid>
         </Grid>
-        <Grid container item xs={12} className="navigation">
-          <Grid container item xs={8} gap={8} className="navigationLinks">
+        <Grid container item className="navigation">
+          <Grid container item xs={8} className="navigationLinks">
             <HomeOutlined
               className="icons"
               color="primary"

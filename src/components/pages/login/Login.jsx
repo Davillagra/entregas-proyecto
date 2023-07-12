@@ -12,13 +12,19 @@ export const Login = () => {
   return (
     <div className="buttonList">
       <Grid className="grid" container>
-        <Button xs={8} variant="outlined" onClick={handleSubmitWithGoogle}>
+        <Button
+          className="loginButton"
+          xs={8}
+          variant="outlined"
+          onClick={handleSubmitWithGoogle}
+        >
           <p>Continuar con Google</p>
           <GoogleIcon />
         </Button>
       </Grid>
       <Grid className="grid" container>
         <Button
+          className="loginButton"
           disabled="true"
           variant="outlined"
           onClick={handleSubmitWithGoogle}
@@ -29,6 +35,7 @@ export const Login = () => {
       </Grid>
       <Grid className="grid" container>
         <Button
+          className="loginButton"
           disabled="true"
           variant="outlined"
           onClick={handleSubmitWithGoogle}

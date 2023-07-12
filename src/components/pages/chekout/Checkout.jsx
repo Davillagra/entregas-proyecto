@@ -1,4 +1,4 @@
-import "./Checkout1.css"
+import "./Checkout.css"
 import { Button, TextField } from "@mui/material"
 import { Link } from "react-router-dom"
 

@@ -30,20 +30,24 @@
 }
 .navigation {
   margin: 0 5rem 3rem 5rem !important;
-  justify-content: space-around;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  justify-content: center;
   align-items: center;
   height: 4rem;
   background-color: #7e7d7d;
   border-radius: 15px;
-  width: 50%;
 }
 .navigationLinks {
   height: 4rem;
+  gap: unset !important;
   flex-wrap: nowrap !important;
-  justify-content: space-evenly !important;
+  justify-content: space-around !important;
   padding-left: 1rem;
   padding-right: 1rem;
   align-items: center;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 .navigationLinks a {
   color: #34c53e;

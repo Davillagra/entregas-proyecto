@@ -24,24 +24,15 @@ export const Cart = ({
     maxHeight: "100%",
   })
   return (
-    <Grid container spacing={2} className="cartMain">
+    <Grid container className="cartMain">
       {getTotalQuantity() > 0 ? (
-        <Grid item xs={8} className="cartCard">
+        <Grid item xs={12} md={8} className="cartCard">
           {cart.map((prod) => {
             return (
-              <Paper
-                className="prodCard"
-                key={prod.id}
-                sx={{
-                  p: 2,
-                  margin: "auto",
-                  maxWidth: 500,
-                  flexGrow: 1,
-                }}
-              >
-                <Grid container spacing={2}>
+              <Paper className="prodCard" key={prod.id}>
+                <Grid container className="prodCardGrid">
                   <Grid item>
-                    <ButtonBase sx={{ width: 128, height: 128 }}>
+                    <ButtonBase>
                       <Img alt={prod.title} src={prod.img} />
                     </ButtonBase>
                   </Grid>
@@ -80,12 +71,12 @@ export const Cart = ({
           })}
         </Grid>
       ) : (
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <h1>No hay productos :(</h1>
         </Grid>
       )}
 
-      <Grid container item xs={4} className="buySeccion">
+      <Grid container item xs={12} md={4} className="buySeccion">
         <div>
           <h2>Productos en el carrito: {getTotalQuantity()} </h2>
           <h3>Total: $ {getTotalPrice()} </h3>

@@ -17,14 +17,14 @@ export const ItemCount = ({ stock, initial = 1, onAdd }) => {
         flexDirection="colum"
         alignItems="center"
         justifyContent="center"
-        className="buttons"
+        className="buttons1"
       >
         <Grid
           container
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-          className="buttons"
+          className="buttons2"
         >
           <Button disabled={isAdd} onClick={decrement} className="buttonsAdd">
             -
